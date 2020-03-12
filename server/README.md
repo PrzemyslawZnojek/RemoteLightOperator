@@ -1,6 +1,6 @@
-##Installation
+## Installation ##
 
-#Type following commands form console in server folder:
+### Type following commands form console in server folder: ###
 
 Venv:
 ```
@@ -17,11 +17,11 @@ Venv:
 >set FLASK_APP=server.py #  windows
 ```
 
-###In order to run server:
+## In order to run server: ##
 ```
 >flask run
 ```
 in web browser: http://127.0.0.1:5000/
 
-***in order to work with firebase download firebase json key, name it "firebase_key.json" and place it in server/ folder***
+* in order to work with firebase download firebase json key, name it "firebase_key.json" and place it in server/ folder
 

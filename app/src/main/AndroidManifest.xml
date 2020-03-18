@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".plantchooser.PlantListActivity"
+            android:label="Plant List">
+        </activity>
+        <activity android:name=".plantchooser.PlantDescriptionActivity"
+            android:label="Plant Description">
+        </activity>
     </application>
 
 </manifest>

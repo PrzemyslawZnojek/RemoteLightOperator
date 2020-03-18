@@ -1,6 +1,9 @@
 package com.example.remotelightoperator.model;
 
-public class PlantTemplate {
+import java.io.Serializable;
+
+public class PlantTemplate implements Serializable {
+    private int plantID;
     private String name;
     private String description;
     private int irradiationTime;
@@ -9,12 +12,21 @@ public class PlantTemplate {
 
     public PlantTemplate() {}
 
-    public PlantTemplate(String name, String description, int irradiationTime, float rate, float rateCount) {
+    public PlantTemplate(int plantID, String name, String description, int irradiationTime, float rate, float rateCount) {
+        this.plantID = plantID;
         this.name = name;
         this.description = description;
         this.irradiationTime = irradiationTime;
         this.rate = rate;
         this.rateCount = rateCount;
+    }
+
+    public int getPlantID() {
+        return plantID;
+    }
+
+    public void setPlantID(int plantID) {
+        this.plantID = plantID;
     }
 
     public String getName() {

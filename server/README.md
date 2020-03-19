@@ -24,4 +24,3 @@ Venv:
 in web browser: http://127.0.0.1:5000/
 
 * in order to work with firebase download firebase json key, name it "firebase_key.json" and place it in server/ folder
-

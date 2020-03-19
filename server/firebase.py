@@ -20,6 +20,12 @@ class FirebaseManager:
         for doc in docs:
             print(u'{} => {}'.format(doc.id, doc.to_dict()))
 
+    def read_plant_settings(self):
+        lampa_ref = self.db.collection(u'PlantTemplate')
+        docs = lampa_ref.stream()
+        for doc in docs:
+            print(u'{} => {}'.format(doc.id, doc.to_dict()))
+
     @staticmethod
     def on_snapshot(doc_snapshot, changes, read_time):
         for doc in doc_snapshot:

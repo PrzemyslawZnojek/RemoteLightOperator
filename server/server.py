@@ -29,3 +29,8 @@ def firebase():
     print('Wyniki z firebase:')
     fb.read()
     return {}
+
+
+fb = FirebaseManager()
+print('Wyniki z firebase:')
+fb.read_plant_settings()

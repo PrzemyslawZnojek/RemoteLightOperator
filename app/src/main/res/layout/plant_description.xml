@@ -1,116 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/common_google_signin_btn_text_dark_default"
-    >
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/nameTitle"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
-        android:textAlignment="textStart"
-        android:textStyle="bold"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        <TextView
+            android:id="@+id/nameTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="Name"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/descriptionTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Description"
-        android:textStyle="bold"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nameTitle"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        <TextView
+            android:id="@+id/descriptionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="Description"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/irradiationTimeTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Irradiation Time"
-        android:textAlignment="textStart"
-        android:textStyle="bold"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/descriptionTitle"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/irradiationTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        <TextView
+            android:id="@+id/irradiationTimeTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="Irradiation Time"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/rateTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Rate"
-        android:textAlignment="textStart"
-        android:textStyle="bold"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        <TextView
+            android:id="@+id/irradiationTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/irradiationTimeTitle"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/rate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        <TextView
+            android:id="@+id/rateTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/irradiationTime"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="Rate"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/rateCountTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Rate Count"
-        android:textAlignment="textStart"
-        android:textStyle="bold"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        <TextView
+            android:id="@+id/rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rateTitle"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/rateCount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="textStart"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        <TextView
+            android:id="@+id/rateCountTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rate"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="Rate Count"
+            android:textAlignment="textStart"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <Switch
-        android:id="@+id/switchOn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Switch"
-        android:textAlignment="center" />
+        <TextView
+            android:id="@+id/rateCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rateCountTitle"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
 
-    <ImageView
-        android:id="@+id/descriptionImageLogo"
+        <Switch
+            android:id="@+id/switchOn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Switch"
+            android:textAlignment="center"
+            android:layout_below="@+id/rateCount"/>
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dip"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="20dip"
-        android:adjustViewBounds="true"
-        android:src="@drawable/logo_small" />
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/descriptionImageLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="20dip"
+            android:adjustViewBounds="true"
+            android:src="@drawable/logo_small" />
+    </RelativeLayout>
+</RelativeLayout>

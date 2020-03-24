@@ -1,47 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/common_google_signin_btn_text_dark_default"
+    >
+
+    <TextView
+        android:id="@+id/nameTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textAlignment="textStart"
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
 
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <TextView
+        android:id="@+id/descriptionTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
 
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <TextView
+        android:id="@+id/irradiationTimeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Irradiation Time"
+        android:textAlignment="textStart"
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
 
     <TextView
         android:id="@+id/irradiationTime"
         android:layout_width="match_parent"
-        android:layout_height="67dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <TextView
+        android:id="@+id/rateTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rate"
+        android:textAlignment="textStart"
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
 
     <TextView
         android:id="@+id/rate"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+    <TextView
+        android:id="@+id/rateCountTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rate Count"
+        android:textAlignment="textStart"
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
 
     <TextView
         android:id="@+id/rateCount"
         android:layout_width="match_parent"
-        android:layout_height="81dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
 
     <Switch
         android:id="@+id/switchOn"
@@ -49,5 +100,17 @@
         android:layout_height="wrap_content"
         android:text="Switch"
         android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/descriptionImageLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dip"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dip"
+        android:adjustViewBounds="true"
+        android:src="@drawable/logo_small" />
 
 </LinearLayout>

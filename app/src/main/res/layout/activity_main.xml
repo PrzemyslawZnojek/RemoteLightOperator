@@ -3,16 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/logo">
 
     <Button
         android:id="@+id/plantListButton"
-        android:layout_width="match_parent"
+        android:layout_width="371dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginLeft="20dp"
         android:text="Go to Plant List"
         tools:layout_editor_absoluteX="71dp"
         tools:layout_editor_absoluteY="433dp" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Logout"
+        tools:layout_editor_absoluteX="71dp"
+        tools:layout_editor_absoluteY="433dp"
+        android:layout_below="@id/plantListButton"/>
 
 
 </RelativeLayout>

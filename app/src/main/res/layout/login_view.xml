@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/login"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/logo">
+
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="E-mail:"
+        android:textSize="28sp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="300dp"/>
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@id/emailTextView" />
+
+    <TextView
+        android:id="@+id/passwordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emailEditText"
+        android:text="Password:"
+        android:textSize="28sp"
+        android:layout_marginLeft="15dp"/>
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordTextView"
+        android:layout_marginLeft="15dp"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/editLoginButton"
+        android:layout_width="380dp"
+        android:layout_height="62dp"
+        android:layout_below="@id/passwordEditText"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="1dp"
+        android:text="LOGIN" />
+
+</RelativeLayout>

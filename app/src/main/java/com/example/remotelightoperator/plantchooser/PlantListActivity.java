@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.remotelightoperator.R;
-import com.example.remotelightoperator.firestore.PlantTemplateStoreUtils;
+import com.example.remotelightoperator.firebase.PlantTemplateStoreUtils;
 import com.example.remotelightoperator.model.PlantTemplate;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnFailureListener;

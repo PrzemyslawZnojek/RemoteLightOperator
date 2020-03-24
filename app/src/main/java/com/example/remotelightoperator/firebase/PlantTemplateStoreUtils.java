@@ -1,4 +1,4 @@
-package com.example.remotelightoperator.firestore;
+package com.example.remotelightoperator.firebase;
 
 import com.example.remotelightoperator.model.PlantTemplate;
 import com.google.android.gms.tasks.Task;

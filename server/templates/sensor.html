@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart lamp</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Smart lamp</h1>
+      <hr />
+
+      <h2>Czujnik ({{ data.mac }})</h2>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Właściwość</th>
+            <th scope="col">Wartość</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>MAC</td>
+            <td>{{ data.mac }}</td>
+          </tr>
+          <tr>
+            <td>IP</td>
+            <td>{{ data.ip }}</td>
+          </tr>
+          <tr>
+            <td>Aktywny</td>
+            <td>
+              {% if data.alive %}
+                <span style="color: green">Tak</span>
+              {% else %}
+                <span style="color: red">Nie</span>
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td>TTL</td>
+            <td>{{ data.ttl }}</td>
+          </tr>
+          <tr>
+            <td>Ostatni czas odczytu</td>
+            <td>{{ data.last_read_timestamp }}</td>
+          </tr>
+          <tr>
+            <td>Ostatnia wartość odczytu</td>
+            <td>{{ data.last_read_value }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Ostatnie 100 odczytów</h2>
+      <canvas id="chart" width="150" height="50"></canvas>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+      <script>
+        const ctx = document.querySelector('#chart').getContext('2d');
+
+        const timestamps = {{ data.last_100_reads_timestamps | tojson }};
+        const values = {{ data.last_100_reads_values | tojson }};
+
+        let labels = [];
+        let data = [];
+        for (let i = 0; i < timestamps.length; i += 1) {
+          labels.push(Math.floor(timestamps[i] - timestamps[0]));
+          data.push(values[i]);
+        };
+
+        console.log(data);
+
+        const lineChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels,
+            datasets: [{
+              label: 'Wartość z czujnika',
+              backgroundColor: 'rgba(0, 0, 0, 0)',
+              borderColor: 'rgba(255, 0, 0, 1)',
+              data
+            }]
+          },
+          options: {
+            responsive: true
+          }
+        })
+      </script>
+  </body>
+</html>

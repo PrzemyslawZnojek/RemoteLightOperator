@@ -1,36 +1,45 @@
-from pprint import pprint
-
-from flask import Flask, request, jsonify
 import json
+import random
+
+from flask import Flask, request, jsonify, render_template
 from firebase import FirebaseManager
 
-app = Flask(__name__)
+from controller import Controller
+from sensor import Sensor
 
+
+app = Flask(__name__)
+ctr = Controller()
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def index():
+  return render_template('index.html', data=ctr.dump_data())
 
 
-@app.route('/api')
-def api():
-    return json.dumps({'dziala?': 'ta'})
+@app.route('/sensor/<mac>')
+def show_sensor(mac):
+  sensor = ctr.get_sensor(mac)
+  return render_template('sensor.html', data=sensor.dump_data())
 
 
-@app.route('/light_measures', methods=['POST'])
-def light_measures():
-    data = request.form
-    pprint(data)
-    return jsonify(data)
-
-@app.route('/test_firebase')
-def firebase():
-    fb = FirebaseManager()
-    print('Wyniki z firebase:')
-    fb.read()
-    return {}
+@app.route('/api/version')
+def api_version():
+    return u'v0.0.1'
 
 
-fb = FirebaseManager()
-print('Wyniki z firebase:')
-fb.read_plant_settings()
+@app.route('/api/sensor_entry', methods=['POST'])
+def api_sensor_entry():
+  data = request.get_json()
+
+  if not data:
+    return
+
+  sensor = ctr.get_sensor(data['mac'])
+
+  if not sensor:
+    sensor = Sensor(ip=request.remote_addr, mac=data['mac'])
+    ctr.add_sensor(sensor)
+
+  sensor.add_entry(float(data['measurement']))
+
+  return jsonify({'success': True})

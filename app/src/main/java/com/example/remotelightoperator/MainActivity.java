@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.remotelightoperator.myplants.MyPlantsActivity;
 import com.example.remotelightoperator.plantchooser.PlantListActivity;
 import com.example.remotelightoperator.welcome.WelcomeActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,6 +19,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         auth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_main);
+        ((Button) findViewById(R.id.myPlantListButton)).setOnClickListener(this);
         ((Button) findViewById(R.id.plantListButton)).setOnClickListener(this);
         ((Button) findViewById(R.id.logoutButton)).setOnClickListener(this);
     }
@@ -25,6 +27,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        if (v == findViewById(R.id.myPlantListButton)) {
+            startActivity(new Intent(this, MyPlantsActivity.class));
+        }
         if (v == findViewById(R.id.plantListButton)) {
             startActivity(new Intent(this, PlantListActivity.class));
         }

@@ -20,13 +20,16 @@
         <activity android:name=".plantchooser.PlantListActivity"
             android:label="Plant List">
         </activity>
-        <activity android:name=".plantchooser.PlantDescriptionActivity"
+        <activity android:name=".plantdescription.PlantFullDescriptionActivity"
             android:label="Plant Description">
         </activity>
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".login.LoginActivity" android:label="Login">
         </activity>
+        <activity android:name=".myplants.MyPlantsActivity" />
+        <activity android:name=".plantdescription.MyPlantsDescriptionActivity" />
+        <activity android:name=".registration.RegistrationActivity" />
     </application>
 
 </manifest>

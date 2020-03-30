@@ -1,4 +1,4 @@
-package com.example.remotelightoperator.plantchooser;
+package com.example.remotelightoperator.myplants;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.ListView;
 import com.example.remotelightoperator.R;
 import com.example.remotelightoperator.firebase.PlantTemplateStoreUtils;
 import com.example.remotelightoperator.model.PlantTemplate;
-import com.example.remotelightoperator.plantdescription.PlantFullDescriptionActivity;
+import com.example.remotelightoperator.plantdescription.MyPlantsDescriptionActivity;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,22 +22,20 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 
-public class PlantListActivity extends Activity{
-
+public class MyPlantsActivity  extends Activity {
     List<PlantTemplate> plants;
-    PlantChooserAdapter adapter;
+    MyPlantsAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.plant_chooser);
+        setContentView(R.layout.my_plants_view);
         getPlantTemplate();
 
     }
 
-    // TODO: Remove this method after creating a documentation.
     private void getPlantTemplate() {
-        Task<QuerySnapshot> queryTask = PlantTemplateStoreUtils.getAllPlantTemplatesQueryTask();
+        Task<QuerySnapshot> queryTask = PlantTemplateStoreUtils.getMyPlantsQueryTask();
         queryTask.addOnSuccessListener(generateOnSuccess());
         queryTask.addOnCanceledListener(generateOnCanceled());
         queryTask.addOnFailureListener(genetateOnFailture());
@@ -52,13 +50,13 @@ public class PlantListActivity extends Activity{
                 ListView listView = (ListView) findViewById(R.id.listView);
                 plants = PlantTemplateStoreUtils
                         .mapSnapshotsToPlantTemplates(queryDocumentSnapshots.getDocuments());
-                adapter = new PlantChooserAdapter(plants, PlantListActivity.this);
+                adapter = new MyPlantsAdapter(plants, MyPlantsActivity.this);
                 listView.setAdapter(adapter);
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent newIntent = new Intent(PlantListActivity.this, PlantFullDescriptionActivity.class);
+                        Intent newIntent = new Intent(MyPlantsActivity.this, MyPlantsDescriptionActivity.class);
                         newIntent.putExtra("PlantTemplate", plants.get(position));
                         startActivity(newIntent);
                     }
@@ -87,5 +85,4 @@ public class PlantListActivity extends Activity{
             }
         };
     }
-
 }

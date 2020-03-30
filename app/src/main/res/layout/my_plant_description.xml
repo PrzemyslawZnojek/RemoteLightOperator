@@ -75,57 +75,13 @@
             android:textAlignment="textStart"
             android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/rateTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/irradiationTime"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:text="Rate"
-            android:textAlignment="textStart"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/rate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rateTitle"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:textAlignment="textStart"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/rateCountTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rate"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:text="Rate Count"
-            android:textAlignment="textStart"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/rateCount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rateCountTitle"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:textAlignment="textStart"
-            android:textSize="18sp" />
-
         <Button
-            android:id="@+id/addToMyPlants"
+            android:id="@+id/configureLight"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/rateCount"
+            android:layout_below="@id/irradiationTime"
             android:layout_centerHorizontal="true"
-            android:text="Add to My Plants"  />
+            android:text="Configure light"  />
 
     </RelativeLayout>
 

@@ -1,0 +1,11 @@
+div(class='card')
+  div(class='card-header') Wybrany profil rośliny
+  ul(class='list-group list-group-flush')
+    li(class='list-group-item')
+      strong Nazwa:
+      | 
+      span= user.config.plantName
+    li(class='list-group-item')
+      strong Wymagany czas naświetlania:
+      | 
+      span #{user.config.irradiationTime} min/dzień

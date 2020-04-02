@@ -1,0 +1,14 @@
+div(class='card mb-3')
+  div(class='card-header') Lampa
+  div(class='card-body')
+    div(class='card-text')
+      span Status:
+      | 
+      if lamp.enabled
+        strong(style='color: green') włączona
+      else
+        strong(style='color: red') wyłączona
+    div(class='card-text')
+      span Tryb: 
+      | 
+      span= lamp.mode === 'MANUAL' ? 'manualny' : 'automatyczny'

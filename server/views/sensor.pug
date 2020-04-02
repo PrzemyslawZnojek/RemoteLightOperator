@@ -1,0 +1,53 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title= 'Smart lamp'
+
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
+
+  body
+    div(class='container')
+      h1 
+        a(href='/') Smart lamp
+      hr
+
+      div(class='mt-4 mb-4')
+        h2 Czujnik #{mac}
+        table(class='table mt-1 mb-1')
+          thead
+            tr
+              th(scope='col') Właściwość
+              th(scope='col') Wartość
+          tbody
+            tr
+              td Mac
+              td= mac
+            tr
+              td IP
+              td= ip
+            tr
+              td Aktywny
+              td
+                if active
+                  span(style='color: green') Tak
+                else
+                  span(style='color: red') Nie
+            tr
+              td TTL
+              td= ttl
+            tr
+              td Ostatni czas odczytu
+              td= new Date(lastTimestamp).toLocaleTimeString()
+            tr
+              td Ostatnia wartość odczytu
+              td= lastMeasurement
+      
+      h2 Ostatnie 100 odczytów
+      canvas(id='chart', width='150', height='50')
+
+      script.
+        window.jsData = !{JSON.stringify({lastReads: last100Reads})};
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js', integrity='sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=', crossorigin='anonymous')
+      script(src='/static/chart.js')

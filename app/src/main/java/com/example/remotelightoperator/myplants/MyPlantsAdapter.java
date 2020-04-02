@@ -9,31 +9,32 @@ import android.widget.TextView;
 
 import com.example.remotelightoperator.R;
 import com.example.remotelightoperator.model.PlantTemplate;
+import com.example.remotelightoperator.model.UserConfiguration;
 
 import java.util.List;
 
 public class MyPlantsAdapter  extends BaseAdapter {
-    public List<PlantTemplate> plants;
+    public List<UserConfiguration> userConfigurations;
     Context context;
 
-    public MyPlantsAdapter(List<PlantTemplate> plants, Context context) {
-        this.plants = plants;
+    public MyPlantsAdapter(List<UserConfiguration> userConfigurations, Context context) {
+        this.userConfigurations = userConfigurations;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return plants.size();
+        return userConfigurations.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return plants.get(position);
+        return userConfigurations.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return plants.get(position).getPlantID();
+        return 0;
     }
 
     @Override
@@ -41,7 +42,7 @@ public class MyPlantsAdapter  extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.plant_text, parent, false);
         }
-        System.out.print("Plants " + plants.get(0).getName());
+        System.out.print("Plants " + userConfigurations.get(0).getPlantName());
         PlantTemplate plant = (PlantTemplate) getItem(position);
         TextView tvName = (TextView) convertView.findViewById(R.id.name);
         TextView tvSurname = (TextView) convertView.findViewById(R.id.description);

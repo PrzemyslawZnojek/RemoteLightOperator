@@ -14,10 +14,6 @@ import java.util.List;
 public class PlantTemplateStoreUtils {
     private static final String COLLECTION_NAME = "PlantTemplate";
 
-    public static Task<QuerySnapshot> getMyPlantsQueryTask(){
-        return null;
-    }
-
     public static Task<QuerySnapshot>  getAllPlantTemplatesQueryTask() {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         return  firestore
@@ -32,5 +28,7 @@ public class PlantTemplateStoreUtils {
         }
         return plantTemplates;
     }
+
+
 
 }

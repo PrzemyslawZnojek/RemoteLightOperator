@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.remotelightoperator.R;
 import com.example.remotelightoperator.model.PlantTemplate;
+import com.example.remotelightoperator.model.UserConfiguration;
 
 public class MyPlantsDescriptionActivity  extends Activity implements View.OnClickListener  {
     @Override
@@ -18,13 +19,13 @@ public class MyPlantsDescriptionActivity  extends Activity implements View.OnCli
         setContentView(R.layout.my_plant_description);
 
         Intent intent = this.getIntent();
-        PlantTemplate plantTemplate = (PlantTemplate) intent.getSerializableExtra("PlantTemplate");
+        UserConfiguration plantTemplate = (UserConfiguration) intent.getSerializableExtra("UserConfiguration");
 
         TextView name = (TextView) findViewById(R.id.name);
         TextView description = (TextView) findViewById(R.id.description);
         TextView irradiationTime = (TextView) findViewById(R.id.irradiationTime);
 
-        name.setText(plantTemplate.getName());
+        name.setText(plantTemplate.getPlantName());
         description.setText(plantTemplate.getDescription());
         irradiationTime.setText(String.valueOf(plantTemplate.getIrradiationTime()));
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/login"
+    android:id="@+id/signup"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/logo">
@@ -24,7 +24,7 @@
             android:textSize="28sp" />
 
         <EditText
-            android:id="@+id/emailEditText"
+            android:id="@+id/signUpEmailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/emailTextView"
@@ -34,13 +34,13 @@
             android:id="@+id/passwordTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/emailEditText"
+            android:layout_below="@id/signUpEmailEditText"
             android:layout_marginLeft="15dp"
             android:text="Password:"
             android:textSize="28sp" />
 
         <EditText
-            android:id="@+id/passwordEditText"
+            android:id="@+id/signUpPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/passwordTextView"
@@ -51,8 +51,8 @@
             android:id="@+id/editRegisterButton"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/passwordEditText"
+            android:layout_below="@id/signUpPasswordEditText"
             android:layout_centerHorizontal="true"
-            android:text="SIGN IN" />
+            android:text="SIGN UP" />
     </RelativeLayout>
 </RelativeLayout>

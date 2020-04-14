@@ -12,11 +12,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.remotelightoperator.R;
+import com.example.remotelightoperator.firebase.PlantTemplateStoreUtils;
 import com.example.remotelightoperator.firebase.UserConfigurationStoreUtils;
 import com.example.remotelightoperator.model.PlantTemplate;
 import com.example.remotelightoperator.myplants.MyPlantsActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class PlantFullDescriptionActivity extends Activity implements View.OnClickListener {
 
@@ -41,6 +44,22 @@ public class PlantFullDescriptionActivity extends Activity implements View.OnCli
         rate.setText(String.valueOf(plantTemplate.getRate()));
         rateCount.setText(String.valueOf(plantTemplate.getRateCount()));
 
+
+        // ---BACKEND DEMO---
+        //TODO: REMOVE
+        PlantTemplateStoreUtils.rateTemplate(5, plantTemplate)
+                .addOnSuccessListener(new RatePlantSuccessListener())
+                .addOnFailureListener(new RatePlantFailureListener());
+
+        PlantTemplate templateToAdd = new PlantTemplate();
+        templateToAdd.setName("Dodany");
+        templateToAdd.setDescription("Test opis");
+        templateToAdd.setIrradiationTime(11111);
+        templateToAdd.setPlantID(9);
+        PlantTemplateStoreUtils.addPlantTemplate(templateToAdd)
+            .addOnSuccessListener(new AddPlantSuccessListener());
+
+        // ---DEMO END---
         ((Button) findViewById(R.id.addToMyPlants)).setOnClickListener(this);
     }
 
@@ -71,6 +90,35 @@ public class PlantFullDescriptionActivity extends Activity implements View.OnCli
         public void onFailure(@NonNull Exception e) {
             Log.wtf("TEST UPDATE CONFIGURATION", "Update finished");
             Toast.makeText(PlantFullDescriptionActivity.this, "Update failed.",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private class RatePlantSuccessListener implements OnSuccessListener<Void> {
+        @Override
+        public void onSuccess(Void v) {
+            Log.wtf("TEST Rate PLANT", "Rate finished");
+            Toast.makeText(PlantFullDescriptionActivity.this, "Rating finished for plant finished.",
+                    Toast.LENGTH_SHORT).show();
+           }
+    }
+
+    private class RatePlantFailureListener implements OnFailureListener {
+
+        @Override
+        public void onFailure(@NonNull Exception e) {
+            Log.wtf("TEST RATE", "Rate finished");
+            Log.wtf("TEST RATE", e.getMessage());
+            Toast.makeText(PlantFullDescriptionActivity.this, "Rate failed.",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private class AddPlantSuccessListener implements OnSuccessListener<DocumentReference> {
+        @Override
+        public void onSuccess(DocumentReference v) {
+            Log.wtf("TEST ADD PLANT", "Adding finished");
+            Toast.makeText(PlantFullDescriptionActivity.this, "Adding finished for plant finished.",
                     Toast.LENGTH_SHORT).show();
         }
     }

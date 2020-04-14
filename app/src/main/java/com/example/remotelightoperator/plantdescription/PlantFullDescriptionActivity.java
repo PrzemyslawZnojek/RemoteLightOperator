@@ -61,6 +61,7 @@ public class PlantFullDescriptionActivity extends Activity implements View.OnCli
 
         // ---DEMO END---
         ((Button) findViewById(R.id.addToMyPlants)).setOnClickListener(this);
+        boolean couldBeRated = PlantTemplateStoreUtils.couldBeRated(plantTemplate);
     }
 
     @Override

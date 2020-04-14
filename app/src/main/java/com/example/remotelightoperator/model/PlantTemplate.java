@@ -13,7 +13,16 @@ public class PlantTemplate implements Serializable {
     private int irradiationTime;
     private float rate;
     private float rateCount;
-    private String[] ratedBy;
+
+    public String getRatedBy() {
+        return ratedBy;
+    }
+
+    public void setRatedBy(String ratedBy) {
+        this.ratedBy = ratedBy;
+    }
+
+    private String ratedBy;
     private String firebaseID;
 
     public PlantTemplate() {}
@@ -25,15 +34,6 @@ public class PlantTemplate implements Serializable {
         this.irradiationTime = irradiationTime;
         this.rate = rate;
         this.rateCount = rateCount;
-    }
-
-
-    public String[] getRatedBy() {
-        return ratedBy;
-    }
-
-    public void setRatedBy(String[] ratedBy) {
-        this.ratedBy = ratedBy;
     }
 
     public String getFirebaseID() {
@@ -104,7 +104,10 @@ public class PlantTemplate implements Serializable {
     }
 
     public void addNewRate(int newRate, String uid) {
+        ratedBy = String.format("%s, %s", Optional.ofNullable(ratedBy).orElse(""), uid);
         rate = ((rate * rateCount) + newRate) / (rateCount + 1);
         rateCount++;
     }
+
+
 }

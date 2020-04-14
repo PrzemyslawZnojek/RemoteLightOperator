@@ -9,7 +9,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -54,6 +53,12 @@ public class PlantTemplateStoreUtils {
             plantTemplates.add(template);
         }
         return plantTemplates;
+    }
+
+    public static boolean couldBeRated(PlantTemplate template) {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        return auth.getUid() != null
+                && !template.getRatedBy().contains(auth.getUid());
     }
 
 }

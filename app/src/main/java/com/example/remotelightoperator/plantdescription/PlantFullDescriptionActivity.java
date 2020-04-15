@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 import com.example.remotelightoperator.R;
 import com.example.remotelightoperator.firebase.PlantTemplateStoreUtils;
@@ -19,7 +17,8 @@ import com.example.remotelightoperator.myplants.MyPlantsActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+
+import androidx.annotation.NonNull;
 
 public class PlantFullDescriptionActivity extends Activity implements View.OnClickListener {
 
@@ -44,25 +43,28 @@ public class PlantFullDescriptionActivity extends Activity implements View.OnCli
         rate.setText(String.valueOf(plantTemplate.getRate()));
         rateCount.setText(String.valueOf(plantTemplate.getRateCount()));
 
-
-        // ---BACKEND DEMO---
-        //TODO: REMOVE
-//        PlantTemplateStoreUtils.rateTemplate(5, plantTemplate)
-//                .addOnSuccessListener(new RatePlantSuccessListener())
-//                .addOnFailureListener(new RatePlantFailureListener());
-//
-//        PlantTemplate templateToAdd = new PlantTemplate();
-//        templateToAdd.setName("Dodany");
-//        templateToAdd.setDescription("Test opis");
-//        templateToAdd.setIrradiationTime(11111);
-//        templateToAdd.setPlantID(9);
-//        PlantTemplateStoreUtils.addPlantTemplate(templateToAdd)
-//            .addOnSuccessListener(new AddPlantSuccessListener());
+        RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        TextView ratingText = (TextView) findViewById(R.id.rateText);
 
         boolean couldBeRated = PlantTemplateStoreUtils.couldBeRated(plantTemplate);
+        if(!couldBeRated){
+            ratingBar.setEnabled(false);
+            ratingText.setEnabled(false);
+        }
 
-        // ---DEMO END---
-        ((Button) findViewById(R.id.addToMyPlants)).setOnClickListener(this);
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                PlantTemplateStoreUtils.rateTemplate((int)rating, plantTemplate)
+                        .addOnSuccessListener(new RatePlantSuccessListener())
+                        .addOnFailureListener(new RatePlantFailureListener());
+
+                finish();
+                startActivity(getIntent());
+            }
+        });
+
+
     }
 
     @Override

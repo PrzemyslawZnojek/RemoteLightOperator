@@ -59,6 +59,10 @@ public class PlantTemplateStoreUtils {
 
     public static boolean couldBeRated(PlantTemplate template) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
+        if(template.getRatedBy() == null){
+            return true;
+        }
+
         return auth.getUid() != null
                 && !template.getRatedBy().contains(auth.getUid());
     }

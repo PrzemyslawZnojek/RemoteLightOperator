@@ -11,35 +11,55 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+
+        >
+
+        <TextView
+            android:id="@+id/lightMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Choose Light Mode"
+            android:textAlignment="center"
+            android:textSize="23sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.chip.ChipGroup
+            android:id="@+id/lightModeGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_below="@id/lightMode"
+            android:layout_marginTop="10dp"
             app:singleLine="true"
             app:singleSelection="true">
 
 
             <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:id="@+id/lightOn"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="On"
-                app:chipBackgroundColor="@color/colorPrimary"
-                app:chipCornerRadius="24dp" />
+                android:textAlignment="center"/>
 
             <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:id="@+id/lightOff"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Off" />
+                android:text="Off"
+                android:textAlignment="center"/>
 
             <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:id="@+id/lightAuto"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Auto" />
+                android:text="Auto"
+                android:textAlignment="center"/>
 
         </com.google.android.material.chip.ChipGroup>
 

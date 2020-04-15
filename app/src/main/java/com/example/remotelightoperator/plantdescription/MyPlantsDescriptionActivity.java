@@ -38,10 +38,10 @@ public class MyPlantsDescriptionActivity extends Activity implements View.OnClic
     public void onClick(View v) {
         if (v == findViewById(R.id.configureLight)) {
 
-            startActivity(new Intent(this, PlantConfigurerActivity.class));
+            Intent intent = new Intent(this, PlantConfigurerActivity.class);
+            intent.putExtra("UserConfiguration", configuration);
+            startActivity(intent);
 
-            //UserConfigurationStoreUtils.changeLampState(configuration, ForcedState.OFF);
-            // ADD on Success and on failure listeners
         }
     }
 }

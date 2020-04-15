@@ -22,6 +22,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         ((Button) findViewById(R.id.myPlantListButton)).setOnClickListener(this);
         ((Button) findViewById(R.id.plantListButton)).setOnClickListener(this);
         ((Button) findViewById(R.id.logoutButton)).setOnClickListener(this);
+        ((Button) findViewById(R.id.add_plant)).setOnClickListener(this);
     }
 
 
@@ -36,6 +37,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         if (v == findViewById(R.id.logoutButton)) {
             auth.signOut();
             startActivity(new Intent(this, WelcomeActivity.class));
+        }
+        if (v == findViewById(R.id.add_plant)) {
+            startActivity(new Intent(this, AddActivity.class));
         }
     }
 }

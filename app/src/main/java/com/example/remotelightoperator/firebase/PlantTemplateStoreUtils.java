@@ -47,9 +47,11 @@ public class PlantTemplateStoreUtils {
 
     public static List<PlantTemplate> mapSnapshotsToPlantTemplates(Collection<DocumentSnapshot> snapshots) {
         List<PlantTemplate> plantTemplates  = new ArrayList<>();
+        int index = 0;
         for (DocumentSnapshot snap : snapshots) {
             PlantTemplate template = snap.toObject(PlantTemplate.class);
             template.setFirebaseID(snap.getId());
+            template.setPlantID(index++);
             plantTemplates.add(template);
         }
         return plantTemplates;

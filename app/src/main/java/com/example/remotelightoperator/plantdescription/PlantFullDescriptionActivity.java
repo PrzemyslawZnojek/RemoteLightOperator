@@ -47,17 +47,17 @@ public class PlantFullDescriptionActivity extends Activity implements View.OnCli
 
         // ---BACKEND DEMO---
         //TODO: REMOVE
-        PlantTemplateStoreUtils.rateTemplate(5, plantTemplate)
-                .addOnSuccessListener(new RatePlantSuccessListener())
-                .addOnFailureListener(new RatePlantFailureListener());
-
-        PlantTemplate templateToAdd = new PlantTemplate();
-        templateToAdd.setName("Dodany");
-        templateToAdd.setDescription("Test opis");
-        templateToAdd.setIrradiationTime(11111);
-        templateToAdd.setPlantID(9);
-        PlantTemplateStoreUtils.addPlantTemplate(templateToAdd)
-            .addOnSuccessListener(new AddPlantSuccessListener());
+//        PlantTemplateStoreUtils.rateTemplate(5, plantTemplate)
+//                .addOnSuccessListener(new RatePlantSuccessListener())
+//                .addOnFailureListener(new RatePlantFailureListener());
+//
+//        PlantTemplate templateToAdd = new PlantTemplate();
+//        templateToAdd.setName("Dodany");
+//        templateToAdd.setDescription("Test opis");
+//        templateToAdd.setIrradiationTime(11111);
+//        templateToAdd.setPlantID(9);
+//        PlantTemplateStoreUtils.addPlantTemplate(templateToAdd)
+//            .addOnSuccessListener(new AddPlantSuccessListener());
 
         boolean couldBeRated = PlantTemplateStoreUtils.couldBeRated(plantTemplate);
 

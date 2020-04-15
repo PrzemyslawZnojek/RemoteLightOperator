@@ -35,10 +35,20 @@
             tools:layout_editor_absoluteY="433dp" />
 
         <Button
-            android:id="@+id/logoutButton"
+            android:id="@+id/add_plant"
             android:layout_width="371dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/plantListButton"
+            android:layout_marginLeft="20dp"
+            android:text="Add Plant Template"
+            tools:layout_editor_absoluteX="71dp"
+            tools:layout_editor_absoluteY="433dp" />
+
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="371dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/add_plant"
             android:layout_marginLeft="20dp"
             android:text="Logout"
             tools:layout_editor_absoluteX="71dp"

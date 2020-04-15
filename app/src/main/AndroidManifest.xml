@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".welcome.WelcomeActivity"
+        <activity android:name=".AddActivity"></activity>
+        <activity
+            android:name=".welcome.WelcomeActivity"
             android:label="Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,16 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".plantchooser.PlantListActivity"
-            android:label="Plant List">
-        </activity>
-        <activity android:name=".plantdescription.PlantFullDescriptionActivity"
-            android:label="Plant Description">
-        </activity>
-        <activity android:name=".MainActivity">
-        </activity>
-        <activity android:name=".login.LoginActivity" android:label="Login">
-        </activity>
+        <activity
+            android:name=".plantchooser.PlantListActivity"
+            android:label="Plant List"></activity>
+        <activity
+            android:name=".plantdescription.PlantFullDescriptionActivity"
+            android:label="Plant Description"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".login.LoginActivity"
+            android:label="Login"></activity>
         <activity android:name=".myplants.MyPlantsActivity" />
         <activity android:name=".plantdescription.MyPlantsDescriptionActivity" />
         <activity android:name=".registration.RegistrationActivity" />

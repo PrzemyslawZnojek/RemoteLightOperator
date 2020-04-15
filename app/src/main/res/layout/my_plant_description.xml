@@ -83,6 +83,7 @@
             android:layout_centerHorizontal="true"
             android:text="Configure light"  />
 
+
     </RelativeLayout>
 
     <RelativeLayout

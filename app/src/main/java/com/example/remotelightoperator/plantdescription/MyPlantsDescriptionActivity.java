@@ -6,15 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.remotelightoperator.R;
-import com.example.remotelightoperator.firebase.UserConfigurationStoreUtils;
-import com.example.remotelightoperator.model.ForcedState;
-import com.example.remotelightoperator.model.PlantTemplate;
 import com.example.remotelightoperator.model.UserConfiguration;
+import com.example.remotelightoperator.plantconfigurer.PlantConfigurerActivity;
 
-public class MyPlantsDescriptionActivity  extends Activity implements View.OnClickListener  {
+public class MyPlantsDescriptionActivity extends Activity implements View.OnClickListener {
     UserConfiguration configuration;
 
     @Override
@@ -40,7 +37,10 @@ public class MyPlantsDescriptionActivity  extends Activity implements View.OnCli
     @Override
     public void onClick(View v) {
         if (v == findViewById(R.id.configureLight)) {
-            UserConfigurationStoreUtils.changeLampState(configuration, ForcedState.OFF);
+
+            startActivity(new Intent(this, PlantConfigurerActivity.class));
+
+            //UserConfigurationStoreUtils.changeLampState(configuration, ForcedState.OFF);
             // ADD on Success and on failure listeners
         }
     }

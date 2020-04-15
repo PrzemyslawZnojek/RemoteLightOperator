@@ -28,6 +28,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.google.firebase:firebase-analytics:17.2.3'
     implementation 'com.google.firebase:firebase-firestore:21.4.1'
+    implementation 'net.margaritov.preference.colorpicker.ColorPickerPreference:ColorPickerPreference:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'com.google.android.material:material:1.0.0-alpha1'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -6,6 +6,8 @@ html
     title= 'Smart lamp'
 
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
+    link(rel='stylesheet', href='/static/main.css')
+
 
   body
     div(class='container')
@@ -22,6 +24,10 @@ html
         a(href='/') Załaduj ponownie
 
       div(class='row')
+        div(class='col-12')
+          include panel_config.pug
+
+      div(class='row')
         div(class='col-6')
           include panel_plant.pug
         div(class='col-6')
@@ -29,4 +35,4 @@ html
           include panel_sensors.pug
 
     script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js', integrity='sha256-bQmrZe4yPnQrLTY+1gYylfNMBuGfnT/HKsCGX+9Xuqo=', crossorigin='anonymous')
-    script(src='/static/socket.js')
+    script(src='/static/main.js')

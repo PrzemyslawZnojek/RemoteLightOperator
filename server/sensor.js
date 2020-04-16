@@ -31,6 +31,10 @@ class Sensor {
     this.active = true;
   }
 
+  getLastEntry() {
+    return this.entries[this.entries.length - 1];
+  }
+
   dump() {
     const lastTimestamp = this.entries.length ? this.entries[this.entries.length - 1].timestamp : null;
     const lastMeasurement = this.entries.length ? this.entries[this.entries.length - 1].measurement : null;

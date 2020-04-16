@@ -56,4 +56,15 @@ public  class UserConfigurationStoreUtils {
     public static UserConfiguration mapSnapshotsToUserConfiguration(DocumentSnapshot snapshot) {
         return snapshot.toObject(UserConfiguration.class);
     }
+
+    public static Task<Void> changeLampState(UserConfiguration configuration, ForcedState state) {
+        configuration.setForcedState(state);
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        return  firestore
+                .collection(COLLECTION_NAME)
+                .document(auth.getUid())
+                .set(configuration);
+    }
 }

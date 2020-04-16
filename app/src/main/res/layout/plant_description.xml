@@ -127,6 +127,25 @@
             android:layout_centerHorizontal="true"
             android:text="Add to My Plants"  />
 
+        <TextView
+            android:id="@+id/rateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/addToMyPlants"
+            android:layout_centerHorizontal="true"
+            android:text="Rate The Plant"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rateText"
+            android:layout_centerHorizontal="true"
+            android:stepSize="1"/>
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -148,6 +167,7 @@
             android:layout_marginRight="20dip"
             android:adjustViewBounds="true"
             android:src="@drawable/logo_small" />
+
 
     </RelativeLayout>
 </RelativeLayout>

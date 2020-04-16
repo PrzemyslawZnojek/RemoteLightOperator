@@ -1,6 +1,7 @@
 package com.example.remotelightoperator.model;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 public class PlantTemplate implements Serializable {
     private int plantID;
@@ -9,6 +10,17 @@ public class PlantTemplate implements Serializable {
     private int irradiationTime;
     private float rate;
     private float rateCount;
+
+    public String getRatedBy() {
+        return ratedBy;
+    }
+
+    public void setRatedBy(String ratedBy) {
+        this.ratedBy = ratedBy;
+    }
+
+    private String ratedBy;
+    private String firebaseID;
 
     public PlantTemplate() {}
 
@@ -19,6 +31,14 @@ public class PlantTemplate implements Serializable {
         this.irradiationTime = irradiationTime;
         this.rate = rate;
         this.rateCount = rateCount;
+    }
+
+    public String getFirebaseID() {
+        return firebaseID;
+    }
+
+    public void setFirebaseID(String firebaseID) {
+        this.firebaseID = firebaseID;
     }
 
     public int getPlantID() {
@@ -79,4 +99,12 @@ public class PlantTemplate implements Serializable {
                 ", rateCount=" + rateCount +
                 '}';
     }
+
+    public void addNewRate(int newRate, String uid) {
+        ratedBy = String.format("%s, %s", Optional.ofNullable(ratedBy).orElse(""), uid);
+        rate = ((rate * rateCount) + newRate) / (rateCount + 1);
+        rateCount++;
+    }
+
+
 }

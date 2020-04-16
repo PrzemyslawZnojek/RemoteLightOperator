@@ -30,6 +30,8 @@
         <activity android:name=".myplants.MyPlantsActivity" />
         <activity android:name=".plantdescription.MyPlantsDescriptionActivity" />
         <activity android:name=".registration.RegistrationActivity" />
+        <activity android:name=".newplantadder.AddPlantTemplateActivity" />
+        <activity android:name=".plantconfigurer.PlantConfigurerActivity" />
     </application>
 
 </manifest>

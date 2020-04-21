@@ -25,7 +25,6 @@ const $lampSunrise = document.querySelector('#lamp-sunrise');
 const $lampSunset = document.querySelector('#lamp-sunset');
 const $lampMonitorStart = document.querySelector('#lamp-monitor-start');
 const $lampMonitorStop = document.querySelector('#lamp-monitor-stop');
-const $lampProgress = document.querySelector('#lamp-progress');
 
 const disable = $el => $el.disabled = true;
 const enable = $el => $el.disabled = false;

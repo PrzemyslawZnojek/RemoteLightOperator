@@ -35,9 +35,13 @@ class Controller {
     this.lamp.adjust(sum / sensors.length);
   }
 
-  applyConfig({irradiationTime, forcedState, sunriseTime, sunsetTime, onReady}) {
+  applyConfig({irradiationTime, lightOptions, forcedState, sunriseTime, sunsetTime, onReady}) {
+    const {red, green, blue, brightness} = (lightOptions || {});
+
     this.lamp.setConfig({
       forcedState,
+      brightness,
+      color: {red, green, blue},
       irradiationTime,
       sunriseTime,
       sunsetTime,

@@ -10,6 +10,27 @@ public class PlantTemplate implements Serializable {
     private int irradiationTime;
     private float rate;
     private float rateCount;
+    private LightOptions lightOptions;
+
+    public PlantTemplate(int plantID, String name, String description, int irradiationTime, float rate, float rateCount, LightOptions lightOptions, String ratedBy, String firebaseID) {
+        this.plantID = plantID;
+        this.name = name;
+        this.description = description;
+        this.irradiationTime = irradiationTime;
+        this.rate = rate;
+        this.rateCount = rateCount;
+        this.lightOptions = lightOptions;
+        this.ratedBy = ratedBy;
+        this.firebaseID = firebaseID;
+    }
+
+    public LightOptions getLightOptions() {
+        return lightOptions;
+    }
+
+    public void setLightOptions(LightOptions lightOptions) {
+        this.lightOptions = lightOptions;
+    }
 
     public String getRatedBy() {
         return ratedBy;

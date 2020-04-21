@@ -9,6 +9,15 @@ public class UserConfiguration implements Serializable {
     private ForcedState forcedState;
     private String plantName;
     private String description;
+    private LightOptions lightOptions;
+
+    public LightOptions getLightOptions() {
+        return lightOptions;
+    }
+
+    public void setLightOptions(LightOptions lightOptions) {
+        this.lightOptions = lightOptions;
+    }
 
     public String getUid() {
         return uid;

@@ -4,11 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/common_google_signin_btn_text_dark_default"
     android:orientation="vertical">
 
 
     <RelativeLayout
+        android:id="@+id/chipGroupLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -65,25 +67,97 @@
 
     </RelativeLayout>
 
-
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="13dp"
-        android:orientation="horizontal">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/chipGroupLayout"
+        >
 
-        <ImageView
-            android:id="@+id/descriptionImageLogo"
+        <TextView
+            android:id="@+id/color_picker_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Pick Color"
+            android:textAlignment="center"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            tools:context="com.example.application.colorpicker.MainActivity"
+            android:layout_below="@+id/color_picker_view"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="10dip"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="20dip"
-            android:adjustViewBounds="true"
-            android:src="@drawable/logo_small" />
+            >
+
+            <ImageView
+                android:id="@+id/color_picker_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:srcCompat="@drawable/color"
+                android:contentDescription="Color Picker" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/color_picker_image"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp">
+
+                <RelativeLayout
+                    android:id="@+id/show_color_background"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp" />
+
+                <TextView
+                    android:id="@+id/selectedColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="243dp"
+                    android:text="Selected Color"
+                    android:textAlignment="center"
+                    android:textSize="23dp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/brightness_picker_text"
+            android:layout_below="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Pick Brightness"
+            android:textAlignment="center"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/Brightness_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:context="com.example.application.colorpicker.MainActivity"
+            android:layout_below="@+id/brightness_picker_text"
+            android:layout_centerHorizontal="true"
+            >
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                style="@style/Widget.AppCompat.SeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="255" />
+        </RelativeLayout>
 
     </RelativeLayout>
+
 </RelativeLayout>

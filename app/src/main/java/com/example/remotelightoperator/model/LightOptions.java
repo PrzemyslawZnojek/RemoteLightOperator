@@ -1,6 +1,8 @@
 package com.example.remotelightoperator.model;
 
-public class LightOptions {
+import java.io.Serializable;
+
+public class LightOptions implements Serializable {
     private int brightness;
     private int red;
     private int green;

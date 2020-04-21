@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ import com.google.firebase.firestore.DocumentReference;
 
 import androidx.annotation.NonNull;
 
-public class PlantFullDescriptionActivity extends Activity implements View.OnClickListener {
+public class PlantFullDescriptionActivity extends Activity {
 
     private PlantTemplate plantTemplate;
     @Override
@@ -64,17 +65,27 @@ public class PlantFullDescriptionActivity extends Activity implements View.OnCli
             }
         });
 
+        Button button = findViewById(R.id.addToMyPlants);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserConfigurationStoreUtils.updateUserConfigurationPlantParamsQueryTask(plantTemplate)
+                        .addOnSuccessListener(new UpdateConfigurationSuccessListener())
+                        .addOnFailureListener(new UpdateConfigurationOnFailureListener());
+            }
+        });
+
 
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v == findViewById(R.id.addToMyPlants)) {
-            UserConfigurationStoreUtils.updateUserConfigurationPlantParamsQueryTask(plantTemplate)
-                    .addOnSuccessListener(new UpdateConfigurationSuccessListener())
-                    .addOnFailureListener(new UpdateConfigurationOnFailureListener());
-        }
-    }
+//    @Override
+//    public void onClick(View v) {
+//        if (v == findViewById(R.id.addToMyPlants)) {
+//            UserConfigurationStoreUtils.updateUserConfigurationPlantParamsQueryTask(plantTemplate)
+//                    .addOnSuccessListener(new UpdateConfigurationSuccessListener())
+//                    .addOnFailureListener(new UpdateConfigurationOnFailureListener());
+//        }
+//    }
 
     private class UpdateConfigurationSuccessListener implements OnSuccessListener<Void> {
 

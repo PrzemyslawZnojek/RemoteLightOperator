@@ -18,14 +18,14 @@ import java.util.Random;
 
 public class Migration {
     private static final String PLANT_TEMPLATE = "PlantTemplate";
-    public void execute() {
+    public static void execute() {
 //        addLightOptionsToPlantTemplates();
 //        addLightOptionsToUserConfiguration();
 
         // Add new scripts when needed, after execution comment out it
     }
 
-    private void addLightOptionsToPlantTemplates() {
+    private static void addLightOptionsToPlantTemplates() {
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore
                 .collection(PLANT_TEMPLATE)
@@ -53,7 +53,7 @@ public class Migration {
                 });
     }
 
-    private void addLightOptionsToUserConfiguration() {
+    private static void addLightOptionsToUserConfiguration() {
         final String USER_CONFIGURATION = "UserConfiguration";
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore

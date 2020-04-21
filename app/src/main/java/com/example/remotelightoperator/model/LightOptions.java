@@ -1,47 +1,54 @@
 package com.example.remotelightoperator.model;
 
 public class LightOptions {
-    private short brightness;
-    private short red;
-    private short green;
-    private short blue;
+    private int brightness;
+    private int red;
+    private int green;
+    private int blue;
 
-    public LightOptions(short brightness, short red, short green, short blue) {
+    public LightOptions(int brightness, int red, int green, int blue) {
         this.brightness = brightness;
         this.red = red;
         this.green = green;
         this.blue = blue;
     }
 
-    public short getBrightness() {
+    public LightOptions() {
+        this.brightness = 255;
+        this.red = 255;
+        this.green = 255;
+        this.blue = 255;
+    }
+
+    public int getBrightness() {
         return brightness;
     }
 
-    public void setBrightness(short brightness) {
+    public void setBrightness(int brightness) {
         this.brightness = brightness;
     }
 
-    public short getRed() {
+    public int getRed() {
         return red;
     }
 
-    public void setRed(short red) {
+    public void setRed(int red) {
         this.red = red;
     }
 
-    public short getGreen() {
+    public int getGreen() {
         return green;
     }
 
-    public void setGreen(short green) {
+    public void setGreen(int green) {
         this.green = green;
     }
 
-    public short getBlue() {
+    public int getBlue() {
         return blue;
     }
 
-    public void setBlue(short blue) {
+    public void setBlue(int blue) {
         this.blue = blue;
     }
 }

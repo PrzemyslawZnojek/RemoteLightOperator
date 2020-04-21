@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.remotelightoperator.firebase.PlantTemplateStoreUtils;
+import com.example.remotelightoperator.model.LightOptions;
 import com.example.remotelightoperator.model.PlantTemplate;
 import com.example.remotelightoperator.plantdescription.PlantFullDescriptionActivity;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -40,11 +41,14 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
             if(name.length() == 0 || decription.length() == 0 || irradiation_time.length() == 0) {
                 return;
             }
-                    PlantTemplate templateToAdd = new PlantTemplate();
+            LightOptions lightOptions = new LightOptions();
+
+            PlantTemplate templateToAdd = new PlantTemplate();
             templateToAdd.setName(name.getText().toString());
             templateToAdd.setDescription(decription.getText().toString());
             templateToAdd.setIrradiationTime(Integer.parseInt(irradiation_time.getText().toString()));
             templateToAdd.setPlantID(1);
+            templateToAdd.setLightOptions(lightOptions);
             PlantTemplateStoreUtils.addPlantTemplate(templateToAdd)
                     .addOnSuccessListener(new OnAddedListener())
                     .addOnFailureListener(new OnAddFailureListener());

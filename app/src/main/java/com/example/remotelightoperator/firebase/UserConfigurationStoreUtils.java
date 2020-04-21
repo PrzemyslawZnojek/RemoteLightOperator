@@ -1,6 +1,7 @@
 package com.example.remotelightoperator.firebase;
 
 import com.example.remotelightoperator.model.ForcedState;
+import com.example.remotelightoperator.model.LightOptions;
 import com.example.remotelightoperator.model.PlantTemplate;
 import com.example.remotelightoperator.model.UserConfiguration;
 import com.google.android.gms.tasks.Task;
@@ -22,11 +23,14 @@ public  class UserConfigurationStoreUtils {
     }
 
     public static Task<Void> addUserConfigurationQueryTask(String uid) {
+        LightOptions lightOptions = new LightOptions();
+
         UserConfiguration configurationCreator = new UserConfiguration();
         configurationCreator.setDescription("No plant chosen");
         configurationCreator.setForcedState(ForcedState.NONE);
         configurationCreator.setPlantName("No plant chosen");
         configurationCreator.setIrradiationTime(0);
+        configurationCreator.setLightOptions(lightOptions);
         configurationCreator.setUid(uid);
 
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();

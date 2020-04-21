@@ -36,12 +36,3 @@
   left: 46%;
   bottom: -3px;
 }
-
-.timeline-progress {
-  position: absolute;
-  bottom: -3px;
-  width: 10px;
-  height: 10px;
-  background: red;
-  border-radius: 50%;
-}

@@ -1,3 +1,7 @@
+const request = require('request');
+
+const THRESHOLD = 150;
+
 class Lamp {
   static MODE_MANUAL = 'MANUAL';
   static MODE_AUTO = 'AUTO';
@@ -7,7 +11,7 @@ class Lamp {
     this.enabled = false;
     this.active = false;
     this.brightness = 1;
-    this.color = {r: 0, b: 0, g: 0};
+    this.color = {red: 0, green: 0, blue: 0};
     this.mode = Lamp.MODE_AUTO;
 
     this.schedule = null;
@@ -23,10 +27,16 @@ class Lamp {
       const {monitorStartTime, monitorStopTime} = this.schedule;
 
 
+      let prevActive = this.active;
+
       if (now.getTime() <  monitorStartTime.getTime() || now > monitorStopTime.getTime()) {
         this.active = false;
       } else {
         this.active = true;
+      }
+
+      if (this.active !== prevActive) {
+        this.sendToLamp();
       }
     }, 5000);
   }
@@ -48,8 +58,14 @@ class Lamp {
     }
   }
 
-  setConfig({forcedState, irradiationTime, sunriseTime, sunsetTime, onReady}) {
+  setConfig({forcedState, color, brightness, irradiationTime, sunriseTime, sunsetTime, onReady}) {
     this.setMode(forcedState);
+
+    this.color = color;
+
+    if (this.mode === Lamp.MODE_MANUAL) {
+      this.brightness = brightness;
+    }
 
     let monitorStartTime = null;
     let monitorStopTime = null;
@@ -91,6 +107,8 @@ class Lamp {
         color: this.color
       });
     }
+
+    this.sendToLamp();
   }
 
   adjust(average_light) {
@@ -98,23 +116,37 @@ class Lamp {
       return;
     }
 
-    if (average_light > 50) {
+    if (average_light > THRESHOLD) {
       this.enabled = false;
+      this.brightness = 0;
     } else {
-      console.log('DUPA', average_light, this.active);
       this.enabled = true;
+      this.brightness = 255 - average_light;
     }
+
+    this.sendToLamp();
+  }
+
+  sendToLamp() {
+    const body = {
+      ...this.color,
+      brightness: this.brightness
+    };
+
+    request('https://lintiest-siamese-8525.dataplicity.io/', {
+      method: 'POST',
+      json: true,
+      body
+    });
   }
 
   dump() {
-    const {r, g, b} = this.color;
-
-    const progress = (Date.now() - this.schedule.sunriseTime.getTime()) / (this.schedule.sunsetTime.getTime() - this.schedule.sunriseTime.getTime());
+    const {red, green, blue} = this.color;
 
     return {
       enabled: this.enabled,
       brightness: this.brightness,
-      color: `rgb(${r}, ${g}, ${b})`,
+      color: `rgb(${red}, ${green}, ${blue})`,
       mode: this.mode,
       schedule: this.schedule ? {
         sunriseTime: `${this.schedule.sunriseTime.getHours()}:${this.schedule.sunriseTime.getMinutes()}`,
@@ -122,7 +154,6 @@ class Lamp {
         monitorStartTime: `${this.schedule.monitorStartTime.getHours()}:${this.schedule.monitorStartTime.getMinutes()}`,
         monitorStopTime: `${this.schedule.monitorStopTime.getHours()}:${this.schedule.monitorStopTime.getMinutes()}`
       } : null,
-      progress,
     };
   }
 }

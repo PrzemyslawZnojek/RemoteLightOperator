@@ -11,7 +11,7 @@ div(class='card mb-3')
       if lamp.enabled
         div Jasność:
           | 
-          span(id='lamp-brightness')= `${lamp.brightness * 100}%`
+          span(id='lamp-brightness')= lamp.brightness
         div Kolor:
           | 
           span(id='lamp-color')= lamp.color

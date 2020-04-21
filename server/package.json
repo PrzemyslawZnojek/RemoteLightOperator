@@ -13,9 +13,11 @@
     "express": "^4.17.1",
     "firebase": "^7.13.1",
     "geoip-lite": "^1.4.1",
+    "mqtt": "^3.0.0",
     "node-geocoder": "^3.27.0",
     "public-ip": "^4.0.1",
     "pug": "^2.0.4",
+    "request": "^2.88.2",
     "socket.io": "^2.3.0",
     "sunrise-sunset-js": "^2.1.2"
   }

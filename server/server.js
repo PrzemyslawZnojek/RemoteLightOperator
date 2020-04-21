@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const http = require('http');
 const socket = require('socket.io');
+const mqtt = require('mqtt');
 
 const Config = require('./config');
 const Controller = require('./controller');
@@ -94,23 +95,37 @@ app.get('/api/version', (req, res) => {
   res.json({version: '0.1'});
 });
 
-app.post('/api/sensor_entry', (req, res) => {
-  const data = req.body;
+// app.post('/api/sensor_entry', (req, res) => {
+//   const data = req.body;
   
-  if (!data || !data.mac || !data.measurement) {
-    return res.status('400').send('Bad Request');
-  }
+//   if (!data || !data.mac || !data.measurement) {
+//     return res.status('400').send('Bad Request');
+//   }
 
-  if (!ctrl.hasSensor(data.mac)) {
-    ctrl.registerSensor({
-      ip: req.ip,
-      mac: data.mac
-    });
-  }
+//   if (!ctrl.hasSensor(data.mac)) {
+//     ctrl.registerSensor({
+//       ip: req.ip,
+//       mac: data.mac
+//     });
+//   }
 
-  ctrl.addSensorEntry(data);
+//   ctrl.addSensorEntry(data);
 
-  res.status(200).end();
+//   res.status(200).end();
+// });
+
+const client = mqtt.connect("192.168.0.24", {
+  port: 1883,
+  keepalive: 60
+});
+
+client.on('connect', () => {
+  console.log('Connected to esp8266');
+  client.subscribe('esp8266');
+});
+
+client.on('message', (topic, payload) => {
+  console.log(payload.toString());
 });
 
 server.listen(PORT, () => {

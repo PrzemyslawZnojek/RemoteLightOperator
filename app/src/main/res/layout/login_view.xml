@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/emailEditText"
             android:layout_marginLeft="15dp"
-            android:text="Password:"
+            android:text="Hasło"
             android:textSize="28sp" />
 
         <EditText
@@ -53,6 +53,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/passwordEditText"
             android:layout_centerHorizontal="true"
-            android:text="LOGIN" />
+            android:text="ZALOGUJ" />
     </RelativeLayout>
 </RelativeLayout>

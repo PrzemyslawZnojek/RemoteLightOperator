@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:text="Name"
+            android:text="Nazwa rośliny"
             android:textAlignment="textStart"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -39,7 +39,7 @@
             android:layout_below="@+id/name"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:text="Description"
+            android:text="Opis rośliny"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -60,7 +60,7 @@
             android:layout_below="@+id/description"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:text="Irradiation Time"
+            android:text="Czas naświetlania"
             android:textAlignment="textStart"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/irradiationTime"
             android:layout_centerHorizontal="true"
-            android:text="Configure light"  />
+            android:text="Skonfiguruj barwę światła" />
 
 
     </RelativeLayout>

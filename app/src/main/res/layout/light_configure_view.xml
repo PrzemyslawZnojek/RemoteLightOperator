@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Choose Light Mode"
+            android:text="Wybierz tryb oświetlania"
             android:textAlignment="center"
             android:textSize="23sp"
             android:textStyle="bold" />
@@ -40,28 +40,28 @@
 
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:id="@+id/lightOn"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="On"
-                android:textAlignment="center"/>
+                android:text="Włączyny"
+                android:textAlignment="center" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:id="@+id/lightOff"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Off"
-                android:textAlignment="center"/>
+                android:text="Wyłączony"
+                android:textAlignment="center" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:id="@+id/lightAuto"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Auto"
-                android:textAlignment="center"/>
+                android:text="Automatyczny"
+                android:textAlignment="center" />
 
         </com.google.android.material.chip.ChipGroup>
 
@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Pick Color"
+            android:text="Wybierz barwę światła"
             android:textAlignment="center"
             android:textSize="23sp"
             android:textStyle="bold" />
@@ -112,7 +112,7 @@
 
                 <RelativeLayout
                     android:id="@+id/show_color_background"
-                    android:layout_width="200dp"
+                    android:layout_width="100dp"
                     android:layout_height="30dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="15dp" />
@@ -121,8 +121,9 @@
                     android:id="@+id/selectedColor"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="243dp"
-                    android:text="Selected Color"
+                    android:layout_marginEnd="42dp"
+                    android:layout_toStartOf="@+id/show_color_background"
+                    android:text="Wybrana barwa światła"
                     android:textAlignment="center"
                     android:textSize="23dp"
                     android:textStyle="bold" />
@@ -132,11 +133,11 @@
 
         <TextView
             android:id="@+id/brightness_picker_text"
-            android:layout_below="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/layout"
             android:layout_centerHorizontal="true"
-            android:text="Pick Brightness"
+            android:text="Jasność światła"
             android:textAlignment="center"
             android:textSize="23sp"
             android:textStyle="bold" />

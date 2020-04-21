@@ -26,11 +26,23 @@ class Controller {
 
   addSensorEntry({mac, measurement}) {
     this.sensorsMap[mac].addEntry({measurement});
+
+    const sensors = Object.values(this.sensorsMap);
+    const sum = sensors.reduce((acc, sensor) => {
+      return acc + sensor.getLastEntry().measurement;
+    }, 0);
+
+    this.lamp.adjust(sum / sensors.length);
   }
 
-  applyUserConfig({irradiationTime, forcedState}) {
-    this.lamp.setMode(forcedState);
-    //this.lamp.setSchedule(irradiationTime);
+  applyConfig({irradiationTime, forcedState, sunriseTime, sunsetTime, onReady}) {
+    this.lamp.setConfig({
+      forcedState,
+      irradiationTime,
+      sunriseTime,
+      sunsetTime,
+      onReady
+    });
   }
 
   dumpAll() {

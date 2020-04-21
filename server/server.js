@@ -3,6 +3,7 @@ const express = require('express');
 const http = require('http');
 const socket = require('socket.io');
 
+const Config = require('./config');
 const Controller = require('./controller');
 const fb = require('./firebase');
 const auth = require('./middleware/authentication');
@@ -13,6 +14,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socket(server);
 
+const cfg = new Config();
 const ctrl = new Controller({lamp_gpio: 0});
 
 app.use("/static", express.static(path.join(__dirname, "public")));
@@ -26,6 +28,7 @@ app.get('/', auth, async (req, res) => {
   res.render('index', {
     ...ctrl.dumpAll(),
     user: fb.dumpUser(),
+    config: cfg.dump()
   });
 });
 
@@ -59,10 +62,24 @@ app.post('/login', async (req, res) => {
     return res.render('login', {error});
   }
 
-  await fb.readUserConfiguration();
+  const userConfig = await fb.readUserConfiguration();
+  await cfg.setupLocation();
+
+  ctrl.applyConfig({
+    ...userConfig,
+    sunriseTime: cfg.sunriseTime,
+    sunsetTime: cfg.sunsetTime,
+  });
+
   fb.onUserConfigChange(userConfig => {
-    ctrl.applyUserConfig(userConfig);
-    io.emit('config-changed');
+
+    ctrl.applyConfig({
+      ...userConfig,
+      sunriseTime: cfg.sunriseTime,
+      sunsetTime: cfg.sunsetTime
+    });
+
+    io.emit('user-config-changed');
   });
 
   res.status(200).redirect('/');
@@ -99,3 +116,55 @@ app.post('/api/sensor_entry', (req, res) => {
 server.listen(PORT, () => {
   console.log(`IoT server listening on port ${PORT}`);
 });
+
+
+io.on('connection', socket => {
+  socket.on('auto-location', async () => {
+    cfg.setLocationAutoMode(data => {
+      ctrl.applyConfig({
+        ...fb.getCurrentUserConfig(),
+        sunriseTime: data.sunriseTime,
+        sunsetTime: data.sunsetTime,
+        onReady: data => io.emit('set-lamp-config', {
+          ...data,
+          sunriseTime: `${data.sunriseTime.getHours()}:${data.sunriseTime.getMinutes()}`,
+          sunsetTime: `${data.sunsetTime.getHours()}:${data.sunsetTime.getMinutes()}`,
+          monitorStartTime: `${data.monitorStartTime.getHours()}:${data.monitorStartTime.getMinutes()}`,
+          monitorStopTime: `${data.monitorStopTime.getHours()}:${data.monitorStopTime.getMinutes()}`
+        })
+      });
+
+      io.emit('set-config-data', {
+        ...data,
+        sunriseTime: `${data.sunriseTime.getHours()}:${data.sunriseTime.getMinutes()}`,
+        sunsetTime: `${data.sunsetTime.getHours()}:${data.sunsetTime.getMinutes()}`
+      });
+    });
+  });
+  
+  socket.on('manual-location', () => {
+    cfg.setLocationManualMode();
+  });
+
+  socket.on('get-location-from-address', ({address}) => {
+    cfg.setLocationFromAddress(address, data => {
+      ctrl.applyConfig({
+        ...fb.getCurrentUserConfig(),
+        sunriseTime: data.sunriseTime,
+        sunsetTime: data.sunsetTime,
+        onReady: data => io.emit('set-lamp-config', {
+          ...data,
+          sunriseTime: `${data.sunriseTime.getHours()}:${data.sunriseTime.getMinutes()}`,
+          sunsetTime: `${data.sunsetTime.getHours()}:${data.sunsetTime.getMinutes()}`,
+          monitorStartTime: `${data.monitorStartTime.getHours()}:${data.monitorStartTime.getMinutes()}`,
+          monitorStopTime: `${data.monitorStopTime.getHours()}:${data.monitorStopTime.getMinutes()}`
+        })
+      });
+      io.emit('set-config-data', {
+        ...data,
+        sunriseTime: `${data.sunriseTime.getHours()}:${data.sunriseTime.getMinutes()}`,
+        sunsetTime: `${data.sunsetTime.getHours()}:${data.sunsetTime.getMinutes()}`,
+      });
+    });
+  });
+})

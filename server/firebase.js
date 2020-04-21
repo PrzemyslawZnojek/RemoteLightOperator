@@ -51,7 +51,7 @@ class Firebase {
     if (!this.currentUser) {
       return;
     }
-    
+
     const uid = this.currentUser.uid;
     const userConfigRef = this.db.collection('UserConfiguration').where('uid', '==', uid);
 
@@ -88,6 +88,10 @@ class Firebase {
 
   getCurrentUser() {
     return this.currentUser;
+  }
+
+  getCurrentUserConfig() {
+    return this.currentUserConfiguration;
   }
 
   dumpUser() {

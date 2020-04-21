@@ -2,13 +2,45 @@ div(class='card mb-3')
   div(class='card-header') Lampa
   div(class='card-body')
     div(class='card-text')
-      span Status:
-      | 
-      if lamp.enabled
-        strong(style='color: green') włączona
-      else
-        strong(style='color: red') wyłączona
-    div(class='card-text')
+      div Status:
+        | 
+        strong(id='lamp-enabled')= lamp.enabled ? 'włączona' : 'wyłączona'
       span Tryb: 
       | 
-      span= lamp.mode === 'MANUAL' ? 'manualny' : 'automatyczny'
+      strong(id='lamp-mode')= lamp.mode === 'MANUAL' ? 'manualny' : 'automatyczny'
+      if lamp.enabled
+        div Jasność:
+          | 
+          span(id='lamp-brightness')= `${lamp.brightness * 100}%`
+        div Kolor:
+          | 
+          span(id='lamp-color')= lamp.color
+      if lamp.mode === 'AUTO' && lamp.schedule
+        div(class='mt-3', style='display: flex; flex-direction: column;', id='lamp-timeline')
+          h5 Doświetlanie
+          ul(class='mt-3', class='timeline')
+            li
+              div(class='timestamp')
+                span Wschód słońca
+                span(id='lamp-sunrise')= lamp.schedule.sunriseTime
+              div(class='line')
+                div(class='dot')
+            li
+              div(class='timestamp')
+                span Początek monitorowania
+                span(id='lamp-monitor-start')= lamp.schedule.monitorStartTime
+              div(class='line')
+                div(class='dot')
+            li
+              div(class='timestamp')
+                span Koniec monitorowania
+                span(id='lamp-monitor-stop')= lamp.schedule.monitorStopTime
+              div(class='line')
+                div(class='dot')
+            li
+              div(class='timestamp')
+                span Zachód słońca
+                span(id='lamp-sunset')= lamp.schedule.sunsetTime
+              div(class='line')
+                div(class='dot')
+

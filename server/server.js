@@ -95,7 +95,7 @@ app.get('/api/version', (req, res) => {
   res.json({version: '0.1'});
 });
 
-const client = mqtt.connect("mqtt://192.168.0.24", {
+const client = mqtt.connect("mqtt://192.168.0.14", {
   port: 1883,
   keepalive: 60
 });
@@ -107,6 +107,7 @@ client.on('connect', () => {
 
 client.on('message', (topic, payload) => {
   let data;
+  console.log(payload.toString())
 
   try {
     data = JSON.parse(payload.toString());
@@ -175,7 +176,7 @@ io.on('connection', socket => {
       });
     });
   });
-  
+
   socket.on('manual-location', () => {
     cfg.setLocationManualMode();
   });

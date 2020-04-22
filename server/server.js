@@ -95,7 +95,7 @@ app.get('/api/version', (req, res) => {
   res.json({version: '0.1'});
 });
 
-const client = mqtt.connect("192.168.0.24", {
+const client = mqtt.connect("mqtt://192.168.0.24", {
   port: 1883,
   keepalive: 60
 });
@@ -106,11 +106,23 @@ client.on('connect', () => {
 });
 
 client.on('message', (topic, payload) => {
-  console.log(payload.toString());
+  let data;
+
+  try {
+    data = payload.toJSON().data;
+
+    if (!data) {
+      return;
+    }
+  } catch (error) {
+    console.error(error);
+    return;
+  }
+
 
   const mac = '1f:aa:03:4d:ef:c9';
-  const color = {red: 255, green: 255, blue: 255};
-  const brightness = 255;
+  const color = {red: data.red, green: data.green, blue: data.blue};
+  const brightness = data.clear_light;
 
   if (!ctrl.hasSensor(mac)) {
     ctrl.registerSensor({

@@ -1,8 +1,7 @@
 const SENSOR_TTL = 10;
 
 class Sensor {
-  constructor({ip, mac}) {
-    this.ip = ip;
+  constructor({mac}) {
     this.mac = mac;
 
     this.ttl = SENSOR_TTL;
@@ -22,9 +21,10 @@ class Sensor {
     }
   }
 
-  addEntry({measurement}) {
+  addEntry({color, brightness}) {
     this.entries.push({
-      measurement,
+      brightness,
+      color,
       timestamp: Date.now(),
     });
     this.ttl = SENSOR_TTL;
@@ -37,13 +37,12 @@ class Sensor {
 
   dump() {
     const lastTimestamp = this.entries.length ? this.entries[this.entries.length - 1].timestamp : null;
-    const lastMeasurement = this.entries.length ? this.entries[this.entries.length - 1].measurement : null;
+    const lastMeasurement = this.entries.length ? this.entries[this.entries.length - 1].brightness : null;
 
     return {
       lastTimestamp,
       lastMeasurement,
       last100Reads: this.entries.slice(-100),
-      ip: this.ip,
       mac: this.mac,
       ttl: this.ttl,
       active: this.active,

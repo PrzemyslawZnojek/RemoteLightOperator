@@ -19,7 +19,6 @@ class Lamp {
     this.monitorTimer = setInterval(() => {
       if (!this.schedule || !this.schedule.monitorStopTime || !this.schedule.monitorStartTime) {
         this.active = false;
-        this.enabled = false;
         return;
       }
 
@@ -34,11 +33,7 @@ class Lamp {
       } else {
         this.active = true;
       }
-
-      if (this.active !== prevActive) {
-        this.sendToLamp();
-      }
-    }, 5000);
+    }, 1000);
   }
 
   setMode(forcedState) {
@@ -55,6 +50,7 @@ class Lamp {
 
       default:
         this.mode = Lamp.MODE_AUTO;
+        this.enabled = false;
     }
   }
 
@@ -87,7 +83,7 @@ class Lamp {
       monitorStopTime = new Date(middle + irradiationMs / 2);
     }
 
-    if (forcedState === 'ON' && forcedState === 'OFF') {
+    if (forcedState === 'ON' || forcedState === 'OFF') {
       this.schedule = null;
     } else {
       this.schedule = {
@@ -97,6 +93,8 @@ class Lamp {
         monitorStopTime,
       };
     }
+
+    console.log(this.schedule, this.active, this.enabled);
 
     if (onReady) {
       onReady({

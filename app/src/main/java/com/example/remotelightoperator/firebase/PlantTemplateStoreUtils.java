@@ -2,6 +2,7 @@ package com.example.remotelightoperator.firebase;
 
 import com.example.remotelightoperator.model.PlantTemplate;
 import com.google.android.gms.tasks.Task;
+import com.google.common.base.Optional;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -11,6 +12,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 // TODO: Consider replacing this class with DAO, synchronized singelton(?)
 public class PlantTemplateStoreUtils {
@@ -62,9 +65,21 @@ public class PlantTemplateStoreUtils {
         if(template.getRatedBy() == null){
             return true;
         }
-
         return auth.getUid() != null
                 && !template.getRatedBy().contains(auth.getUid());
+    }
+
+    public static int getUserRate(String uid, PlantTemplate template) throws RuntimeException {
+        String ratedBy = Optional.fromNullable(template.getRatedBy()).or("");
+        Matcher matcher = Pattern
+                .compile(String.format("%s:. ;", uid))
+                .matcher(ratedBy);
+        if(matcher.find()) {
+            return Integer.parseInt(matcher.group(1));
+        } else {
+            throw new IllegalArgumentException(String.format("Could not find id for user with ID: %s", uid));
+        }
+
     }
 
 }

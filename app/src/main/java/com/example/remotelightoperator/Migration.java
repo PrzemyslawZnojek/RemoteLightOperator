@@ -21,6 +21,7 @@ public class Migration {
     public static void execute() {
 //        addLightOptionsToPlantTemplates();
 //        addLightOptionsToUserConfiguration();
+        removeAllRatings();
 
         // Add new scripts when needed, after execution comment out it
     }
@@ -75,6 +76,33 @@ public class Migration {
                             firestore.collection(PLANT_TEMPLATE)
                                     .document(snap.getId())
                                     .set(configuration);
+                        }
+                    }
+                });
+    }
+
+    private static void removeAllRatings() {
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        firestore
+                .collection(PLANT_TEMPLATE)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        Collection<DocumentSnapshot> snapshots = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot snap : snapshots) {
+                            final String PLANT_TEMPLATE = "PlantTemplate";
+                            PlantTemplate template = snap.toObject(PlantTemplate.class);
+
+
+                            template.setRateCount(0);
+                            template.setRate(0);
+                            template.setRatedBy("");
+
+                            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+                            firestore.collection(PLANT_TEMPLATE)
+                                    .document(snap.getId())
+                                    .set(template);
                         }
                     }
                 });

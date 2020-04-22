@@ -10,7 +10,7 @@ class Lamp {
     this.gpio = gpio;
     this.enabled = false;
     this.active = false;
-    this.brightness = 1;
+    this.brightness = 0;
     this.color = {red: 0, green: 0, blue: 0};
     this.mode = Lamp.MODE_AUTO;
 
@@ -59,9 +59,9 @@ class Lamp {
 
     this.color = color;
 
-    if (this.mode === 'ON') {
+    if (forcedState === 'ON') {
       this.brightness = 255;
-    } else if (this.mode === 'OFF') {
+    } else if (forcedState === 'OFF') {
       this.brightness = 0;
     }
 
@@ -96,7 +96,7 @@ class Lamp {
       };
     }
 
-    console.log(this.schedule, this.active, this.enabled);
+    console.log(forcedState, this.schedule, this.active, this.enabled);
 
     if (onReady) {
       onReady({
@@ -140,6 +140,8 @@ class Lamp {
       ...this.color,
       brightness: this.brightness
     };
+
+    // console.log(body);
 
     request('https://lintiest-siamese-8525.dataplicity.io/', {
       method: 'PUT',

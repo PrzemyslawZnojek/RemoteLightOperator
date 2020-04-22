@@ -21,15 +21,15 @@ class Controller {
   }
 
   registerSensor({ip, mac}) {
-    this.sensorsMap[mac] = new Sensor({ip, mac});
+    this.sensorsMap[mac] = new Sensor({mac});
   }
 
-  addSensorEntry({mac, measurement}) {
-    this.sensorsMap[mac].addEntry({measurement});
+  addSensorEntry({mac, brightness, color}) {
+    this.sensorsMap[mac].addEntry({brightness, color});
 
     const sensors = Object.values(this.sensorsMap);
     const sum = sensors.reduce((acc, sensor) => {
-      return acc + sensor.getLastEntry().measurement;
+      return acc + sensor.getLastEntry().brightness;
     }, 0);
 
     this.lamp.adjust(sum / sensors.length);

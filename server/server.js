@@ -95,25 +95,6 @@ app.get('/api/version', (req, res) => {
   res.json({version: '0.1'});
 });
 
-// app.post('/api/sensor_entry', (req, res) => {
-//   const data = req.body;
-  
-//   if (!data || !data.mac || !data.measurement) {
-//     return res.status('400').send('Bad Request');
-//   }
-
-//   if (!ctrl.hasSensor(data.mac)) {
-//     ctrl.registerSensor({
-//       ip: req.ip,
-//       mac: data.mac
-//     });
-//   }
-
-//   ctrl.addSensorEntry(data);
-
-//   res.status(200).end();
-// });
-
 const client = mqtt.connect("192.168.0.24", {
   port: 1883,
   keepalive: 60
@@ -126,6 +107,18 @@ client.on('connect', () => {
 
 client.on('message', (topic, payload) => {
   console.log(payload.toString());
+
+  const mac = '1f:aa:03:4d:ef:c9';
+  const color = {red: 255, green: 255, blue: 255};
+  const brightness = 255;
+
+  if (!ctrl.hasSensor(mac)) {
+    ctrl.registerSensor({
+      mac
+    });
+  }
+
+  ctrl.addSensorEntry({mac, color, brightness});
 });
 
 server.listen(PORT, () => {

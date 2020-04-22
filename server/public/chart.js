@@ -7,7 +7,7 @@ let data = [];
 
 for (let i = 0; i < lastReads.length; i += 1) {
   labels.push(Math.floor((lastReads[i].timestamp - lastReads[0].timestamp) / 1000));
-  data.push(lastReads[i].measurement);
+  data.push(lastReads[i].brightness);
 }
 
 

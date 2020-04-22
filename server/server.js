@@ -135,7 +135,7 @@ client.on('message', (topic, payload) => {
 
 // setInterval(() => {
 //   const mac = '1f:aa:03:4d:ef:c9';
-//   const color = {red: 10, green: 20, blue: 30};
+//   const color = {red: 255, green: 20, blue: 30};
 //   const brightness = Math.floor(Math.random() * 300);
 
 //   if (!ctrl.hasSensor(mac)) {

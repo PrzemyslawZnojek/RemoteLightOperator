@@ -142,10 +142,13 @@ class Lamp {
     };
 
     request('https://lintiest-siamese-8525.dataplicity.io/', {
-      method: 'POST',
+      method: 'PUT',
       json: true,
       body
+    }, (error, response, body) => {
+      console.log('send to lamp response:', error, body);
     });
+
   }
 
   dump() {

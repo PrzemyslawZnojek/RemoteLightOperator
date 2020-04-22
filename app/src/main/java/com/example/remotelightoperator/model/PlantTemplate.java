@@ -123,7 +123,7 @@ public class PlantTemplate implements Serializable {
 
     public void addNewRate(int newRate, String uid) {
         String currentRatedBy = Optional.ofNullable(ratedBy).orElse("");
-        ratedBy = String.format("%s; %s:%d%n ", currentRatedBy, uid, newRate);
+        ratedBy = String.format("%s %s:%d;", currentRatedBy, uid, newRate);
         rate = ((rate * rateCount) + newRate) / (rateCount + 1);
         rateCount++;
     }

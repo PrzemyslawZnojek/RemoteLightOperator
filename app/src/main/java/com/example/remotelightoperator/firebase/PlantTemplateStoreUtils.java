@@ -72,10 +72,11 @@ public class PlantTemplateStoreUtils {
     public static int getUserRate(String uid, PlantTemplate template) throws RuntimeException {
         String ratedBy = Optional.fromNullable(template.getRatedBy()).or("");
         Matcher matcher = Pattern
-                .compile(String.format("%s:. ;", uid))
-                .matcher(ratedBy);
+                .compile(String.format("%s:.", uid))
+                .matcher(ratedBy.trim());
         if(matcher.find()) {
-            return Integer.parseInt(matcher.group(1));
+            String rate = matcher.group(0).split(":")[1];
+            return Integer.parseInt(rate);
         } else {
             throw new IllegalArgumentException(String.format("Could not find id for user with ID: %s", uid));
         }

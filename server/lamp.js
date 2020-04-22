@@ -1,6 +1,6 @@
 const request = require('request');
 
-const THRESHOLD = 150;
+const THRESHOLDS = [5, 10, 15, 20, 40, 60, 100, 200, 250];
 
 class Lamp {
   static MODE_MANUAL = 'MANUAL';
@@ -116,12 +116,20 @@ class Lamp {
       return;
     }
 
-    if (average_light > THRESHOLD) {
+    const lastThreshold = THRESHOLDS[THRESHOLDS.length - 1];
+
+    if (average_light > lastThreshold) {
       this.enabled = false;
       this.brightness = 0;
     } else {
       this.enabled = true;
-      this.brightness = 255 - average_light;
+      this.brightness = 255;
+
+      for (let i = 0; i < THRESHOLDS.length - 1; i += 1) {
+        if (average_light > THRESHOLDS[i]) {
+          this.brightness = (THRESHOLDS.length - i - 1) * Math.floor(255 / THRESHOLDS.length);
+        }
+      }
     }
 
     this.sendToLamp();

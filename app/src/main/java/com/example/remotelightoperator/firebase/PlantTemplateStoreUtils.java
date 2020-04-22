@@ -67,4 +67,8 @@ public class PlantTemplateStoreUtils {
                 && !template.getRatedBy().contains(auth.getUid());
     }
 
+    public static int getUserRate(String uid, PlantTemplate plantTemplate) throws RuntimeException{
+        return 1;
+    }
+
 }

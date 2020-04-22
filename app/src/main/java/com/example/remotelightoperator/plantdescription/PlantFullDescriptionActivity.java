@@ -17,6 +17,7 @@ import com.example.remotelightoperator.model.PlantTemplate;
 import com.example.remotelightoperator.myplants.MyPlantsActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 
 import androidx.annotation.NonNull;
@@ -24,10 +25,13 @@ import androidx.annotation.NonNull;
 public class PlantFullDescriptionActivity extends Activity {
 
     private PlantTemplate plantTemplate;
+    private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plant_description);
+
+        auth = FirebaseAuth.getInstance();
 
         Intent intent = this.getIntent();
         plantTemplate = (PlantTemplate) intent.getSerializableExtra("PlantTemplate");
@@ -49,6 +53,7 @@ public class PlantFullDescriptionActivity extends Activity {
 
         boolean couldBeRated = PlantTemplateStoreUtils.couldBeRated(plantTemplate);
         if(!couldBeRated){
+            ratingBar.setRating((float) PlantTemplateStoreUtils.getUserRate(auth.getUid(), plantTemplate));
             ratingBar.setEnabled(false);
             ratingText.setEnabled(false);
         }

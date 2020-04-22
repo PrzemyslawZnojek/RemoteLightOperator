@@ -59,8 +59,10 @@ class Lamp {
 
     this.color = color;
 
-    if (this.mode === Lamp.MODE_MANUAL) {
-      this.brightness = brightness;
+    if (this.mode === 'ON') {
+      this.brightness = 255;
+    } else if (this.mode === 'OFF') {
+      this.brightness = 0;
     }
 
     let monitorStartTime = null;

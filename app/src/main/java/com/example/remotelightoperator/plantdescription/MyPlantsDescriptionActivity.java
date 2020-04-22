@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.remotelightoperator.R;
 import com.example.remotelightoperator.model.UserConfiguration;
-import com.example.remotelightoperator.plantconfigurer.PlantConfigurerActivity;
+import com.example.remotelightoperator.plantconfigurator.PlantConfiguratorActivity;
 
 public class MyPlantsDescriptionActivity extends Activity implements View.OnClickListener {
     UserConfiguration configuration;
@@ -38,7 +38,7 @@ public class MyPlantsDescriptionActivity extends Activity implements View.OnClic
     public void onClick(View v) {
         if (v == findViewById(R.id.configureLight)) {
 
-            Intent intent = new Intent(this, PlantConfigurerActivity.class);
+            Intent intent = new Intent(this, PlantConfiguratorActivity.class);
             intent.putExtra("UserConfiguration", configuration);
             startActivity(intent);
 

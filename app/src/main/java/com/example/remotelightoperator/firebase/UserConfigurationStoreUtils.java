@@ -8,6 +8,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
 
 public  class UserConfigurationStoreUtils {
     private static final String COLLECTION_NAME = "UserConfiguration";
@@ -50,6 +51,7 @@ public  class UserConfigurationStoreUtils {
         configuration.setIrradiationTime(plantTemplate.getIrradiationTime());
         configuration.setPlantName(plantTemplate.getName());
         configuration.setDescription(plantTemplate.getDescription());
+        configuration.setLightOptions(plantTemplate.getLightOptions());
 
         return  firestore
                 .collection(COLLECTION_NAME)
@@ -63,6 +65,17 @@ public  class UserConfigurationStoreUtils {
 
     public static Task<Void> changeLampState(UserConfiguration configuration, ForcedState state) {
         configuration.setForcedState(state);
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        return  firestore
+                .collection(COLLECTION_NAME)
+                .document(auth.getUid())
+                .set(configuration);
+    }
+
+    public static  Task<Void> changeLampOptions(UserConfiguration configuration, LightOptions lightOptions) {
+        configuration.setLightOptions(lightOptions);
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
 

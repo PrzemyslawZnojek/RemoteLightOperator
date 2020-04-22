@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="400dp"
-            android:text="Go to My Plant"
+            android:text="Moja roślina"
             tools:layout_editor_absoluteX="71dp"
             tools:layout_editor_absoluteY="433dp" />
 
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/myPlantListButton"
             android:layout_marginLeft="20dp"
-            android:text="Go to Available Plants"
+            android:text="Dostępne rośliny"
             tools:layout_editor_absoluteX="71dp"
             tools:layout_editor_absoluteY="433dp" />
 
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/plantListButton"
             android:layout_marginLeft="20dp"
-            android:text="Add Plant Template"
+            android:text="Dodaj roślinę"
             tools:layout_editor_absoluteX="71dp"
             tools:layout_editor_absoluteY="433dp" />
 
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/add_plant"
             android:layout_marginLeft="20dp"
-            android:text="Logout"
+            android:text="Wyloguj"
             tools:layout_editor_absoluteX="71dp"
             tools:layout_editor_absoluteY="433dp" />
 

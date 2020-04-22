@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="Name:"
+            android:text="Nazwa rośliny:"
             android:textSize="28sp" />
 
         <EditText
@@ -33,8 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/add_activity_name"
-            android:text="Irradiation time:"
             android:layout_marginLeft="15dp"
+            android:text="Czas naświetlania:"
             android:textSize="28sp" />
 
         <EditText
@@ -49,9 +49,9 @@
             android:id="@+id/add_activity_description_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description:"
             android:layout_below="@id/add_activity_irradiation_time"
             android:layout_marginLeft="15dp"
+            android:text="Opis rośliny:"
             android:textSize="28sp" />
 
         <EditText
@@ -68,6 +68,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/add_activity_description"
             android:layout_centerHorizontal="true"
-            android:text="SAVE" />
+            android:text="ZAPISZ" />
     </RelativeLayout>
 </RelativeLayout>

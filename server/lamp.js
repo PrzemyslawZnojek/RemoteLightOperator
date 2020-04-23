@@ -30,6 +30,7 @@ class Lamp {
 
       if (now.getTime() <  monitorStartTime.getTime() || now > monitorStopTime.getTime()) {
         this.active = false;
+        this.enabled = false;
       } else {
         this.active = true;
       }
@@ -60,7 +61,7 @@ class Lamp {
     this.color = color;
 
     if (forcedState === 'ON') {
-      this.brightness = 255;
+      this.brightness = brightness || 255;
     } else if (forcedState === 'OFF') {
       this.brightness = 0;
     }

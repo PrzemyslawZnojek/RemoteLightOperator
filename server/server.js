@@ -134,19 +134,19 @@ client.on('message', (topic, payload) => {
   ctrl.addSensorEntry({mac, color, brightness});
 });
 
-// setInterval(() => {
-//   const mac = '1f:aa:03:4d:ef:c9';
-//   const color = {red: 255, green: 20, blue: 30};
-//   const brightness = Math.floor(Math.random() * 300);
+setInterval(() => {
+  const mac = '1f:aa:03:4d:ef:c9';
+  const color = {red: 255, green: 20, blue: 30};
+  const brightness = Math.round(Math.random()) * 300;
 
-//   if (!ctrl.hasSensor(mac)) {
-//     ctrl.registerSensor({
-//       mac
-//     });
-//   }
+  if (!ctrl.hasSensor(mac)) {
+    ctrl.registerSensor({
+      mac
+    });
+  }
 
-//   ctrl.addSensorEntry({mac, color, brightness});
-// }, 3000);
+  ctrl.addSensorEntry({mac, color, brightness});
+}, 1000);
 
 server.listen(PORT, () => {
   console.log(`IoT server listening on port ${PORT}`);

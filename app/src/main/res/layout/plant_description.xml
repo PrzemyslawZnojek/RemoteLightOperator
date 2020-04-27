@@ -104,7 +104,7 @@
             android:layout_below="@+id/rate"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:text="Ilość ocen"
+            android:text="Liczba ocen"
             android:textAlignment="textStart"
             android:textSize="20sp"
             android:textStyle="bold" />

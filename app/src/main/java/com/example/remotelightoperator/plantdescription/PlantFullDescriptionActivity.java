@@ -83,15 +83,6 @@ public class PlantFullDescriptionActivity extends Activity {
 
     }
 
-//    @Override
-//    public void onClick(View v) {
-//        if (v == findViewById(R.id.addToMyPlants)) {
-//            UserConfigurationStoreUtils.updateUserConfigurationPlantParamsQueryTask(plantTemplate)
-//                    .addOnSuccessListener(new UpdateConfigurationSuccessListener())
-//                    .addOnFailureListener(new UpdateConfigurationOnFailureListener());
-//        }
-//    }
-
     private class UpdateConfigurationSuccessListener implements OnSuccessListener<Void> {
 
         @Override
@@ -99,7 +90,6 @@ public class PlantFullDescriptionActivity extends Activity {
             Log.wtf("TEST UPDATE CONFIGURATION", "Update finished");
             Toast.makeText(PlantFullDescriptionActivity.this, "Update finished.",
                     Toast.LENGTH_SHORT).show();
-            //TODO: FIX KRURWA z MY PLANTS
             startActivity(new Intent(PlantFullDescriptionActivity.this, MyPlantsActivity.class));
         }
     }

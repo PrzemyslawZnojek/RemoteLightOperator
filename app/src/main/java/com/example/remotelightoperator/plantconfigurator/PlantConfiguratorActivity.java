@@ -1,5 +1,6 @@
 package com.example.remotelightoperator.plantconfigurator;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -85,11 +86,11 @@ public class PlantConfiguratorActivity extends AppCompatActivity {
 
     private void setLightCurrentState(Chip chip) {
         CharSequence text = chip.getText();
-        if ("On".equals(text)) {
+        if ("Włączony".equals(text)) {
             lightCurrentState = ForcedState.ON;
-        } else if ("Off".equals(text)) {
+        } else if ("Wyłączony".equals(text)) {
             lightCurrentState = ForcedState.OFF;
-        } else if ("Auto".equals(text)) {
+        } else if ("Automatyczny".equals(text)) {
             lightCurrentState = ForcedState.NONE;
         }
     }
@@ -101,6 +102,7 @@ public class PlantConfiguratorActivity extends AppCompatActivity {
         setColorPickerListener();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void setColorPickerListener() {
         image.setOnTouchListener(new View.OnTouchListener() {
             @Override

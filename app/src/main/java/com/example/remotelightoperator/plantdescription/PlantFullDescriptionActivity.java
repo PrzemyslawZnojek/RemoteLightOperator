@@ -44,9 +44,9 @@ public class PlantFullDescriptionActivity extends Activity {
 
         name.setText(plantTemplate.getName());
         description.setText(plantTemplate.getDescription());
-        irradiationTime.setText(String.valueOf(plantTemplate.getIrradiationTime()));
+        irradiationTime.setText(String.valueOf(plantTemplate.getIrradiationTime()).concat(" [s]") );
         rate.setText(String.valueOf(plantTemplate.getRate()));
-        rateCount.setText(String.valueOf(plantTemplate.getRateCount()));
+        rateCount.setText(String.valueOf((int)plantTemplate.getRateCount()));
 
         RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         TextView ratingText = (TextView) findViewById(R.id.rateText);

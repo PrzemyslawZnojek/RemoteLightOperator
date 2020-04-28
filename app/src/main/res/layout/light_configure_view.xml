@@ -44,7 +44,7 @@
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="Włączyny"
+                android:text="Włączony"
                 android:textAlignment="center" />
 
             <com.google.android.material.chip.Chip

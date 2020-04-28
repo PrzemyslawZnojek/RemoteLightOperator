@@ -28,7 +28,7 @@ public class MyPlantsDescriptionActivity extends Activity implements View.OnClic
 
         name.setText(configuration.getPlantName());
         description.setText(configuration.getDescription());
-        irradiationTime.setText(String.valueOf(configuration.getIrradiationTime()));
+        irradiationTime.setText(String.valueOf(configuration.getIrradiationTime()).concat(" [s]"));
 
         ((Button) findViewById(R.id.configureLight)).setOnClickListener(this);
 

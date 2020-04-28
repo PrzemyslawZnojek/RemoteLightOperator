@@ -4,9 +4,9 @@
 
 Adafruit_APDS9960 apds;
 
-const char* ssid = "UPC67B5598";                   // wifi ssid
-const char* password =  "JQ4earkarycf";         // wifi password
-const char* mqttServer = "192.168.0.24";    // IP adress Raspberry Pi
+const char* ssid = "<ssid>";                   // wifi ssid
+const char* password =  "<passwd>";         // wifi password
+const char* mqttServer = "192.168.0.14";    // IP adress Raspberry Pi
 const int mqttPort = 1883;
 const char* mqttUser = "";      // if you don't have MQTT Username, no need input
 const char* mqttPassword = "";  // if you don't have MQTT Password, no need input
